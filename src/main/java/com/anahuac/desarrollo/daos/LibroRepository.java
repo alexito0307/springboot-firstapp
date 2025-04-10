@@ -6,4 +6,5 @@ import com.anahuac.desarrollo.entities.Libro;
 
 public interface LibroRepository extends JpaRepository<Libro, Integer> {
   Libro findByIsbn(String isbn);
+  Libro deleteByIsbn(String isbn);
 }
