@@ -22,8 +22,7 @@ public class LibroCRUDServiceImpl implements LibroCRUDService{
     }
 
     @Override
-    public void cambiarLibro(String isbn, String nombre, String autor, String editorial) {
-        Libro libro = new Libro(isbn, nombre, autor, editorial);
+    public void cambiarLibro(Libro libro) {
         libroRepository.save(libro);
     }
 
@@ -40,8 +39,13 @@ public class LibroCRUDServiceImpl implements LibroCRUDService{
     }
 
     @Override
-    public void borrarLibro(String isbn) {
+    public void borrarLibroByIsbn(String isbn) {
         libroRepository.deleteByIsbn(isbn);
+    }
+
+    @Override
+    public void borrarLibro(int id) {
+        libroRepository.deleteById(id);
     }
 
     @Override
@@ -53,5 +57,8 @@ public class LibroCRUDServiceImpl implements LibroCRUDService{
     public Libro buscarLibroPorIsbn(String isbn) {
         return libroRepository.findByIsbn(isbn);
     }
-
+    @Override
+    public void crearLibro(Libro libro) {
+        libroRepository.save(libro);
+    }
 }
